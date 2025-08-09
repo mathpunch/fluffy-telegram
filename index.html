@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <title>Zane Shh</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Important for mobile scaling -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     html, body {
       height: 100%;
       margin: 0;
       padding: 0;
       overflow: hidden;
+      background: black;
     }
     iframe {
       position: fixed;
@@ -18,10 +19,23 @@
       width: 100vw;
       height: 100vh;
       border: none;
+      opacity: 1;
+      transition: opacity 1s ease; /* Smooth fade */
     }
   </style>
 </head>
 <body>
-  <iframe src="https://arcticmath.vercel.app" allowfullscreen></iframe>
+  <iframe id="myFrame" src="https://www.ixl.com" allowfullscreen></iframe>
+
+  <script>
+    setTimeout(function() {
+      const iframe = document.getElementById('myFrame');
+      iframe.style.opacity = 0; // fade out
+      setTimeout(function() {
+        iframe.src = "https://arcticmath.vercel.app";
+        iframe.style.opacity = 1; // fade in
+      }, 1000); // wait for fade out to finish
+    }, 10000); // 10 seconds before switch
+  </script>
 </body>
 </html>
